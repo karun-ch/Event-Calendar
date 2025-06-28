@@ -1,26 +1,58 @@
-# 📅 Event Calendar
+# Event Calendar
 
-A simple, interactive **Event Calendar** built with **React**.  
-Users can add, edit, delete, and reschedule events — with support for daily, weekly, and monthly recurring events.
-
----
-
-## 🚀 Features
-
-- ✅ **Monthly Calendar View**
-- ✅ **Add / Edit / Delete Events**
-- ✅ **Recurring Events** (Daily, Weekly, Monthly)
-- ✅ **Drag-and-Drop Rescheduling**
-- ✅ **Event Persistence** (saved in Local Storage)
-- ✅ **Responsive Design**
+A dynamic, interactive event calendar built with React.
 
 ---
 
-## ⚙️ Tech Stack
+## ✅ Features
 
-- **React** (Create React App)
-- **date-fns** for date handling
-- **Local Storage** for saving events
-- **Basic CSS**
+- Monthly view calendar with navigation
+- Add, edit, delete events
+- Recurring events (daily, weekly, monthly, custom)
+- Drag-and-drop rescheduling
+- Local storage persistence
+- SPA routing with Netlify deployment
+
+---
+
+## 📌 Live Demo
+
+👉 [View Deployed Calendar](https://courageous-fudge-a3db43.netlify.app/)
+
+---
+
+## 📂 Repo
+
+👉 [View GitHub Repository](https://github.com/karun-ch/Event-Calendar)
+
+---
+
+## 🛠 How to Run Locally
+
+```bash
+# Clone repo
+git clone https://github.com/karun-ch/Event-Calendar.git
+
+# Install dependencies
+npm install
+
+# Start dev server
+npm start
+
+# Production build
+npm run build
+
+
+## ✅ **4️⃣ Commit History**
+
+Make sure your commits show **real steps**, e.g.:
+
+Initialize project using Create React App
+Initial commit: Event Calendar app
+update readme
+deploy changes
+Add netlify.toml for SPA routing
+Fix no-loop-func lint error in Calendar.js
+update readme
 
 ---
