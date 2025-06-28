@@ -1,38 +1,70 @@
-.App {
+body {
+  font-family: sans-serif;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.calendar {
+  width: 90%;
+  max-width: 800px;
+  margin: auto;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.row {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+
+.col {
+  flex: 1;
+  border: 1px solid #ddd;
+  padding: 8px;
+  min-height: 80px;
+  position: relative;
+  cursor: pointer;
+}
+
+.col .number {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  font-weight: bold;
+}
+
+.today {
+  background: #e0f7fa;
+}
+
+.disabled {
+  background: #f0f0f0;
+  color: #aaa;
+}
+
+.event-item {
+  margin: 2px 0;
+  padding: 2px;
   color: white;
+  border-radius: 2px;
+  font-size: 0.8em;
 }
 
-.App-link {
-  color: #61dafb;
+.modal {
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%);
+  background: white;
+  padding: 20px;
+  border: 1px solid #333;
+  z-index: 10;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.modal input,
+.modal textarea,
+.modal select {
+  display: block;
+  margin: 5px auto;
+  width: 90%;
+}
+
+.modal button {
+  margin: 5px;
 }
