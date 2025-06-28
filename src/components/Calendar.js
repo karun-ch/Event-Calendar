@@ -50,66 +50,72 @@ export default function Calendar({ events, openModal }) {
   };
 
   const renderCells = () => {
-    const monthStart = startOfMonth(currentMonth);
-    const monthEnd = endOfMonth(monthStart);
-    const startDate = startOfWeek(monthStart);
-    const endDate = endOfWeek(monthEnd);
+  const monthStart = startOfMonth(currentMonth);
+  const monthEnd = endOfMonth(monthStart);
+  const startDate = startOfWeek(monthStart);
+  const endDate = endOfWeek(monthEnd);
 
-    const rows = [];
-    let days = [];
-    let day = startDate;
+  const rows = [];
+  let days = [];
+  let day = startDate;
 
-    while (day <= endDate) {
-      for (let i = 0; i < 7; i++) {
-        const cloneDay = day;
-        days.push(
-          <div
-            className={`col cell ${
-              !isSameMonth(day, monthStart)
-                ? 'disabled'
-                : isSameDay(day, new Date())
-                ? 'today'
-                : ''
-            }`}
-            key={day}
-            onClick={() => openModal(cloneDay)}
-          >
-            <span className="number">{format(day, 'd')}</span>
-            <div className="events">
-              {events
-                .filter(
-                  (e) =>
-                    format(new Date(e.date), 'yyyy-MM-dd') ===
-                    format(day, 'yyyy-MM-dd')
-                )
-                .map((e) => (
-                  <div
-                    key={e.id}
-                    className="event-item"
-                    style={{ background: e.color || '#2196F3' }}
-                    onClick={(ev) => {
-                      ev.stopPropagation();
-                      openModal(cloneDay, e);
-                    }}
-                  >
-                    {e.title}
-                  </div>
-                ))}
-            </div>
+  const handleDayClick = (date) => {
+    openModal(date);
+  };
+
+  const handleEventClick = (ev, date, event) => {
+    ev.stopPropagation();
+    openModal(date, event);
+  };
+
+  while (day <= endDate) {
+    for (let i = 0; i < 7; i++) {
+      const thisDay = day;
+      days.push(
+        <div
+          className={`col cell ${
+            !isSameMonth(thisDay, monthStart)
+              ? 'disabled'
+              : isSameDay(thisDay, new Date())
+              ? 'today'
+              : ''
+          }`}
+          key={thisDay}
+          onClick={() => handleDayClick(thisDay)}
+        >
+          <span className="number">{format(thisDay, 'd')}</span>
+          <div className="events">
+            {events
+              .filter(
+                (e) =>
+                  format(new Date(e.date), 'yyyy-MM-dd') ===
+                  format(thisDay, 'yyyy-MM-dd')
+              )
+              .map((e) => (
+                <div
+                  key={e.id}
+                  className="event-item"
+                  style={{ background: e.color || '#2196F3' }}
+                  onClick={(ev) => handleEventClick(ev, thisDay, e)}
+                >
+                  {e.title}
+                </div>
+              ))}
           </div>
-        );
-        day = addDays(day, 1);
-      }
-      rows.push(
-        <div className="row" key={day}>
-          {days}
         </div>
       );
-      days = [];
+      day = addDays(day, 1);
     }
+    rows.push(
+      <div className="row" key={day}>
+        {days}
+      </div>
+    );
+    days = [];
+  }
 
-    return <div className="body">{rows}</div>;
-  };
+  return <div className="body">{rows}</div>;
+};
 
   return (
     <div className="calendar">
